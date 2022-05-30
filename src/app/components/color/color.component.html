@@ -2,17 +2,7 @@
 <div *ngIf="dataLoaded == false" class="spinner-border text-info" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
-<table *ngIf="dataLoaded == true" class="table table-hover table-striped">
-    <thead>
-        <tr>
-            <th>Color Id</th>
-            <th>Color Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let color of colors">
-            <td>{{color.id}}</td>
-            <td>{{color.name}}</td>
-        </tr>
-    </tbody>
-</table>
+<ul *ngIf="dataLoaded == true" class="list-group">
+    <li class="list-group-item" id="headers">Colors</li>
+    <li *ngFor="let color of colors" class="list-group-item">{{color.name}}</li>
+</ul>

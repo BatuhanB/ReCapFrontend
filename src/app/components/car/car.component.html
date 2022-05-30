@@ -5,18 +5,27 @@
 <table *ngIf="dataLoaded == true" class="table table-hover table-striped">
     <thead>
         <tr>
-            <th>Car Name</th>
-            <th>Brand Name</th>
-            <th>Color</th>
+            <th>Car Id</th>
+            <th>Brand Id</th>
+            <th>Color Id</th>
+            <th>Model Year</th>
             <th>DailyPrice</th>
+            <th>Description</th>
+            <th>Car Detail</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let car of cars">
-            <td>{{car.carName}}</td>
-            <td>{{car.brandName}}</td>
-            <td>{{car.colorName}}</td>
-            <td>{{car.dailyPrice}}</td>
+            <td>{{car.id}}</td>
+            <td>{{car.brandId}}</td>
+            <td>{{car.colorId}}</td>
+            <td>{{car.modelYear}}</td>
+            <td>{{car.dailyPrice}} ₺</td>
+            <td>{{car.description}}</td>
+            <td><button 
+                (click)="setCurrentCar(car)" 
+                routerLink="/car/carDetails/{{car.id}}"
+                class="btn btn-warning">Detail</button></td>
         </tr>
     </tbody>
 </table>
