@@ -1,6 +1,6 @@
 <div class="card" style="width: 18rem;">
-    <div *ngFor="let images of carImages" >
-        <img src="{{carImagePath}}{{images.imagePath}}" class="card-img-top" alt="...">
+    <div>
+        <img src="{{carImagePath}}{{carImagePaths}}" class="card-img-top" alt="...">
     </div>
     <div class="card-body" *ngFor="let car of carDetails">
         <h4 class="card-title">{{car.carName}} {{car.brandName}}</h4>

@@ -10,7 +10,9 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {path:"",pathMatch:"full",component:CarComponent},
   {path:"cars",component:CarComponent},
-  {path:"car/carDetails/:carId",component:CarDetailComponent},
+  {path:"cars/carDetails/:carId",component:CarDetailComponent},
+  {path:"cars/brand/:brandId",component:CarComponent},
+  {path:"cars/color/:colorId",component:CarComponent},
   {path:"brands",component:BrandComponent},
   {path:"rentals",component:RentalComponent},
   {path:"colors",component:ColorComponent},

@@ -5,23 +5,36 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-color',
   templateUrl: './color.component.html',
-  styleUrls: ['./color.component.css']
+  styleUrls: ['./color.component.css'],
 })
 export class ColorComponent implements OnInit {
-  colors:Color[] = [];
-  dataLoaded:boolean = false;
-  message:string = "";
-  constructor(private colorService:ColorService) { }
+  colors: Color[] = [];
+  dataLoaded: boolean = false;
+  currentColor: Color;
+  constructor(private colorService: ColorService) {}
 
   ngOnInit(): void {
     this.getColors();
   }
 
-  getColors(){
-    this.colorService.getColors().subscribe((response)=>{
+  setCurrentColor(color: Color) {
+    this.currentColor = color;
+  }
+
+  setCurrentColorClass(color: Color) {
+    return this.currentColor == color
+      ? 'list-group-item active'
+      : 'list-group-item';
+  }
+
+  getColors() {
+    this.colorService.getColors().subscribe((response) => {
       this.colors = response.data;
       this.dataLoaded = true;
-      this.message = response.message;
-    })
+    });
+  }
+
+  reset() {
+    this.currentColor = { id: -1, name: '' };
   }
 }

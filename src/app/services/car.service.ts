@@ -16,4 +16,12 @@ export class CarService {
     let currentApi = this.apiUrl + "Cars/getall";
     return this.httpClient.get<ListResponseModel<Car>>(currentApi);
   }
+  getCarsByBrandId(brandId:number):Observable<ListResponseModel<Car>>{
+    let currentApi = this.apiUrl + "Cars/getbybrandid?id=" + brandId;
+    return this.httpClient.get<ListResponseModel<Car>>(currentApi);
+  }
+  getCarsByColorId(colorId:number):Observable<ListResponseModel<Car>>{
+    let currentApi = this.apiUrl + "Cars/getbycolorid?id=" + colorId;
+    return this.httpClient.get<ListResponseModel<Car>>(currentApi);
+  }
 }
