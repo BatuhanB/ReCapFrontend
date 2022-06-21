@@ -12,11 +12,11 @@ import { ActivatedRoute } from '@angular/router';
 export class CarDetailComponent implements OnInit {
   carDetails: CarDetail[] = [];
   carImages: CarImage[];
+  carDetail:CarDetail;
   carImagePaths: string = '';
   dataLoaded: boolean = false;
 
   carImagePath: string = 'https://localhost:5001';
-  st: string = '';
   constructor(
     private carDetailService: CarDetailService,
     private activatedRoute: ActivatedRoute
@@ -27,7 +27,7 @@ export class CarDetailComponent implements OnInit {
       if (params['carId']) {
         return this.getCarDetails(params['carId']);
       } else {
-        return;
+        return null;
       }
     });
   }
@@ -35,8 +35,15 @@ export class CarDetailComponent implements OnInit {
   getCarDetails(carId: number) {
     return this.carDetailService.getCarDetails(carId).subscribe((response) => {
       this.carDetails = response.data;
-      this.carImagePaths = this.carDetails[0]?.carImages[0]?.imagePath;
+      this.carDetail = response?.data[0];
+      
+      // console.log(this.carDetail.carImages[0].imagePath);
+      // console.log(this.carDetail.carImages[1].imagePath);
+      // console.log(this.carDetail.carImages[2].imagePath);
+      // console.log(this.carDetail.carImages[3].imagePath);
+      this.carImagePaths = this.carDetails[0].carImages[0]?.imagePath;
       this.carImages = this.carDetails[0]?.carImages;
+      console.log(this.carDetail.carImages);
       this.dataLoaded = true;
     });
   }

@@ -1,70 +1,29 @@
-<div class="card" style="width: 18rem;">
-    <!-- <div>
-        <img src="{{carImagePath}}{{carImagePaths}}" class="card-img-top" alt="...">
+<div class="container-lg">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
     </div>
-    <div class="card-body" *ngFor="let car of carDetails">
-        <h4 class="card-title">{{car.carName}} {{car.brandName}}</h4>
-        <h5 class="card-title">{{car.colorName}}</h5>
-        <h5 class="card-title">{{car.dailyPrice}}</h5>
-        <p class="card-text">{{car.description}}</p>
-        <a href="#" class="btn btn-primary">Details</a>
-    </div>
-</div>
-<div class="container">
-    <div>
-      <div style="margin-top: 50px;">
-        <img src="{{carImagePath}}{{carImagePaths}}"  class="rounded img-thumbnail float-left"
-        alt="...">
-      <ul>
-        <li style="padding:px" *ngFor="let carImage of carImages">
-  
-          <img src="{{carImagePath}}{{carImage?.imagePath}}" style="width: auto; height: 250px;"
-            class="rounded img-thumbnail float-left" alt="...">
-  
-        </li>
-      </ul>
-      </div>
-  
-   -->
-      <div class="card" style="width:100%; margin-bottom: 100px; margin-top: 220px;">
-        <ul  *ngFor="let carDetail of carDetails" class="list-group list-group-flush">
-          <li class="list-group-item">
-            {{carDetail.brandName}}
-          </li>
-          <li class="list-group-item">
-            {{carDetail.modelYear}}
-          </li>
-          <li class="list-group-item">
-            {{carDetail.colorName}}
-          </li>
-          <li class="list-group-item">
-            {{carDetail.description}}
-          </li>
-          <li class="list-group-item">
-            {{carDetail.dailyPrice}}
-          </li>
-  
-        </ul>
+    <div class="carousel-inner" >
+      <div class="carousel-item active" *ngFor="let images of carDetail?.carImages">
+        <img *ngIf="carImages" src="{{carImagePath}}{{images.imagePath}}" class="d-block w-100" alt="...">
       </div>
     </div>
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div *ngFor="let carImage of carImages" class="carousel-item active">
-            <img src="{{carImagePath}}{{carImage.imagePath}}" class="d-block w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>  
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </div>
+<!-- <div class="row">
+  <div class="column" *ngFor="let images of carDetail.carImages" style="display: flex;width:50%;
+  padding: 5px;"><img src="{{carImagePath}}{{images.imagePath}}"
+      style="width: 655px;height:505px;">
+  </div>
+</div> -->

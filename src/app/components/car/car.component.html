@@ -35,8 +35,9 @@
             </tbody>
         </table>
     </div>  -->
-        <div class="row" *ngIf="dataLoaded == true">
-            <div class="card" style="width: 18rem;" *ngFor="let car of carDetails" id="card-responsive">
+        <div class="row" *ngIf="dataLoaded == true"  >
+          
+            <div class="card" style="width: 18rem;"  id="card-responsive" *ngFor="let car of carDetails">
                 <div>
                     <img src="{{carImagePath}}{{car.carImages[0].imagePath}}" class="card-img-top" alt="...">
                 </div>
@@ -45,7 +46,8 @@
                     <!-- <h5 class="card-title">{{car.colorName}}</h5> -->
                     <h5 class="card-title">{{car.dailyPrice}}</h5>
                     <p class="card-text">{{car.description}}</p>
-                    <a href="#" class="btn btn-primary" routerLink="/cars/carDetails/{{car.carId}}}">Details</a>
+                    <a href="#" (click)="setCurrentCar(car)"  class="btn btn-primary" routerLink="/cars/carDetails/{{car.carId}}">Details</a>
                 </div>
             </div>
         </div>
+    </div>

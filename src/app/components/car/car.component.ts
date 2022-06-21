@@ -13,7 +13,7 @@ export class CarComponent implements OnInit {
   cars: Car[] = [];
   carDetails: CarDetail[] = [];
   dataLoaded: boolean = false;
-  currentCar: Car;
+  currentCar: CarDetail;
   carImagePath: string = 'https://localhost:5001';
   carPath:string = "";
   constructor(
@@ -27,14 +27,17 @@ export class CarComponent implements OnInit {
         this.getCarsByBrandId(params['brandId']);
       } else if (params['colorId']) {
         this.getCarsByColorId(params['colorId']);
+      }else if (params['carId']){
+        this.getCarDetails(params['carId'])
       } else {
         this.getCarDetail();
       }
     });
   }
 
-  setCurrentCar(car: Car) {
+  setCurrentCar(car: CarDetail) {
     this.currentCar = car;
+    console.log(this.currentCar);
   }
 
   getCars() {
@@ -52,13 +55,14 @@ export class CarComponent implements OnInit {
     })
   }
 
-  // getCarDetails(carId:number){
-  //   return this.carService.getCarDetails(carId).subscribe((response)=>{
-  //     this.carDetails = response.data;
-  //     this.carPath = this.carDetails[0].carImages[0].imagePath;
-  //     this.dataLoaded = true;
-  //   })
-  // }
+  getCarDetails(carId:number){
+    return this.carService.getCarDetails(carId).subscribe((response)=>{
+      this.carDetails = response.data;
+      this.carPath = this.carDetails[0].carImages[0].imagePath;
+      console.log(this.carDetails);
+      this.dataLoaded = true;
+    })
+  }
 
   getCarsByBrandId(brandId: number) {
     this.carService.getCarsByBrandId(brandId).subscribe((response) => {
