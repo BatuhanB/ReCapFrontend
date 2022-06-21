@@ -14,7 +14,6 @@ export class CarDetailComponent implements OnInit {
   carImages: CarImage[];
   carImagePaths: string = '';
   dataLoaded: boolean = false;
-  firstImage: CarImage[];
 
   carImagePath: string = 'https://localhost:5001';
   st: string = '';
@@ -36,11 +35,8 @@ export class CarDetailComponent implements OnInit {
   getCarDetails(carId: number) {
     return this.carDetailService.getCarDetails(carId).subscribe((response) => {
       this.carDetails = response.data;
-      // this.carImages = this.carDetails[0].carImages;
-      // console.log(response.data);
-      this.carImagePaths = this.carDetails[0].carImages[0].imagePath;
-      console.log(this.carDetails);
-      console.log(this.carImagePaths);
+      this.carImagePaths = this.carDetails[0]?.carImages[0]?.imagePath;
+      this.carImages = this.carDetails[0]?.carImages;
       this.dataLoaded = true;
     });
   }

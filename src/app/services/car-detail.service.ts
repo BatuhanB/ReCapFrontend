@@ -8,11 +8,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CarDetailService {
-  apiUrl = "https://localhost:5001/api/Cars/";
+  apiUrl = "https://localhost:5001/api/";
   constructor(private httpClient:HttpClient) { }
 
   getCarDetails(carId:number):Observable<ListResponseModel<CarDetail>>{
-    let currentApi = this.apiUrl + "getcardetails?id=" + carId;
+    let currentApi = this.apiUrl + "Cars/getcardetails?id=" + carId;
     return this.httpClient.get<ListResponseModel<CarDetail>>(currentApi);
   }
 }

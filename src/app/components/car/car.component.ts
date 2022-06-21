@@ -1,3 +1,4 @@
+import { CarDetail } from './../../models/carDetail';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
 import { CarService } from './../../services/car.service';
@@ -10,8 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarComponent implements OnInit {
   cars: Car[] = [];
+  carDetails: CarDetail[] = [];
   dataLoaded: boolean = false;
   currentCar: Car;
+  carImagePath: string = 'https://localhost:5001';
+  carPath:string = "";
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute
@@ -19,13 +23,12 @@ export class CarComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      if (params["brandId"]) {
-         this.getCarsByBrandId(params["brandId"]);
-      }else if(params["colorId"]) {
-          this.getCarsByColorId(params["colorId"]);
-      }
-      else {
-         this.getCars();
+      if (params['brandId']) {
+        this.getCarsByBrandId(params['brandId']);
+      } else if (params['colorId']) {
+        this.getCarsByColorId(params['colorId']);
+      } else {
+        this.getCarDetail();
       }
     });
   }
@@ -41,17 +44,34 @@ export class CarComponent implements OnInit {
     });
   }
 
+  getCarDetail(){
+    return this.carService.getCarDetail().subscribe((response)=>{
+      this.carDetails = response.data;
+      this.carPath = this.carDetails[0].carImages[0].imagePath;
+      this.dataLoaded = true;
+    })
+  }
+
+  // getCarDetails(carId:number){
+  //   return this.carService.getCarDetails(carId).subscribe((response)=>{
+  //     this.carDetails = response.data;
+  //     this.carPath = this.carDetails[0].carImages[0].imagePath;
+  //     this.dataLoaded = true;
+  //   })
+  // }
+
   getCarsByBrandId(brandId: number) {
-     this.carService.getCarsByBrandId(brandId).subscribe((response) => {
+    this.carService.getCarsByBrandId(brandId).subscribe((response) => {
       this.cars = response.data;
+      console.log(this.cars);
       this.dataLoaded = true;
     });
   }
 
-  getCarsByColorId(colorId:number){
-    this.carService.getCarsByColorId(colorId).subscribe((response)=>{
+  getCarsByColorId(colorId: number) {
+    this.carService.getCarsByColorId(colorId).subscribe((response) => {
       this.cars = response.data;
       this.dataLoaded = true;
-    })
+    });
   }
 }

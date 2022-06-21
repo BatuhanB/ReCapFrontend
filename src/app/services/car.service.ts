@@ -1,3 +1,4 @@
+import { CarDetail } from './../models/carDetail';
 import { Car } from './../models/car';
 import { ListResponseModel } from './../models/listResponseModel';
 import { Observable } from 'rxjs';
@@ -23,5 +24,13 @@ export class CarService {
   getCarsByColorId(colorId:number):Observable<ListResponseModel<Car>>{
     let currentApi = this.apiUrl + "Cars/getbycolorid?id=" + colorId;
     return this.httpClient.get<ListResponseModel<Car>>(currentApi);
+  }
+  getCarDetail():Observable<ListResponseModel<CarDetail>>{
+    let currentApi = this.apiUrl + "Cars/getcardetail";
+    return this.httpClient.get<ListResponseModel<CarDetail>>(currentApi);
+  }
+  getCarDetails(carId:number):Observable<ListResponseModel<CarDetail>>{
+    let currentApi = this.apiUrl + "Cars/getcardetails?id=" + carId;
+    return this.httpClient.get<ListResponseModel<CarDetail>>(currentApi);
   }
 }

@@ -1,3 +1,4 @@
+import { HomeComponent } from './components/home/home.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { ColorComponent } from './components/color/color.component';
@@ -8,7 +9,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path:"",pathMatch:"full",component:CarComponent},
+  {path:"",pathMatch:"full",component:HomeComponent},
+  {path:"home",component:HomeComponent},
   {path:"cars",component:CarComponent},
   {path:"cars/carDetails/:carId",component:CarDetailComponent},
   {path:"cars/brand/:brandId",component:CarComponent},
