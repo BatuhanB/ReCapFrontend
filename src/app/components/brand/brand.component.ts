@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrandComponent implements OnInit {
   brands: Brand[] = [];
-  currentBrand?: Brand;
+  currentBrand?: Brand = null as any;
   dataLoaded: boolean = false;
   constructor(private brandService: BrandService) {}
 
@@ -39,12 +39,11 @@ export class BrandComponent implements OnInit {
   //     : 'list-group-item';
   // }
   getAllBrandClass() {
-    // return back to fix active
-    return this.currentBrand == { id: -1, name: '' }
+    return this.currentBrand == null
       ? 'list-group-item active'
-      : 'list-group-item';
+      : 'list-group-item ';
   }
   reset() {
-    this.currentBrand = { id: -1, name: '' };
+    this.currentBrand = null as any;
   }
 }

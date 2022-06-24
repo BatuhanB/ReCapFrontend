@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ColorComponent implements OnInit {
   colors: Color[] = [];
   dataLoaded: boolean = false;
-  currentColor: Color;
+  currentColor: Color = null as any;
   constructor(private colorService: ColorService) {}
 
   ngOnInit(): void {
@@ -34,7 +34,12 @@ export class ColorComponent implements OnInit {
     });
   }
 
+  getAllColorClass() {
+    return !this.currentColor 
+    ? 'list-group-item active' 
+    : 'list-group-item';
+  }
   reset() {
-    this.currentColor = { id: -1, name: '' };
+    this.currentColor = null as any;
   }
 }

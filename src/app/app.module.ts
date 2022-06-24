@@ -11,6 +11,7 @@ import { ColorComponent } from './components/color/color.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { HomeComponent } from './components/home/home.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HomeComponent } from './components/home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgImageSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

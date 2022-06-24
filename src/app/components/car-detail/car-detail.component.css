@@ -1,0 +1,12 @@
+.bold{
+    font-weight: 700;
+    font-size: 18px;
+}
+.bold-2{
+    font-weight: 500;
+    font-size: 16px;
+}
+.custom-hr{
+    margin-top: -10px;
+    margin-bottom:  5px;
+}

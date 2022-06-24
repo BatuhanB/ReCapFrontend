@@ -1,27 +1,50 @@
 <div>
   <div class="container-lg" style="margin-top: 10px;">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-      <!-- <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-    </div> -->
-      <div class="carousel-inner">
-        <div class="carousel-item active" *ngFor="let images of carDetail?.carImages">
-          <img *ngIf="carImages" src="{{carImagePath}}{{images.imagePath}}" class="d-block w-100" alt="...">
+   
+    <div class="card" *ngFor="let car of carDetails" style="margin: 0 auto; width: 870px;">
+      <div class="card-title" style="text-align: center;margin-top: 10px;">
+        <h3>{{car.carName}} {{car.brandName}}</h3>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"
+        style="width: 850px; margin:10px auto;">
+        <!-- <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      </div> -->
+        <div class="carousel-inner">
+          <div class="carousel-item active" *ngFor="let images of carDetail?.carImages">
+            <img *ngIf="carImages" src="{{carImagePath}}{{images.imagePath}}" class="d-block w-100" alt="..."
+              height="500px">
+          </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+      </div>
+      <div class="card-body" >
+        <hr class="custom-hr">
+        <p class="bold-2"> <span class="bold">Marka: </span> {{car.brandName}}</p>
+        <hr class="custom-hr">
+        <p class="bold-2"> <span class="bold">Model: </span> {{car.carName}}</p>
+        <hr class="custom-hr">
+        <p class="bold-2"> <span class="bold">Fiyat: </span> {{car.dailyPrice}}₺</p>
+        <hr class="custom-hr">
+        <p class="bold-2"> <span class="bold">Renk: </span> {{car.colorName}}</p>
+        <hr class="custom-hr">
+        <p class="bold-2"> <span class="bold">Model Yili: </span> {{car.modelYear}}</p>
+      </div>
+      <div class="card-footer">
+        <p>{{car.description}}</p>
+      </div>
     </div>
   </div>
 </div>
