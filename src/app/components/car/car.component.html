@@ -53,6 +53,7 @@
                     <h5 class="card-title">{{car.dailyPrice}}₺</h5>
                     <p class="card-text">{{car.description.substring(0,car.description.substring(0,50).lastIndexOf(" "))}}...</p>
                     <a href="#" (click)="setCurrentCar(car)"  class="btn btn-primary" routerLink="/cars/carDetails/{{car.carId}}">Details</a>
+                    <button type="button" (click)="rent(car)" class="btn btn-danger">Kirala</button>
                 </div>
             </div>
         </div>
