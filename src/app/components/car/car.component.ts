@@ -16,6 +16,7 @@ export class CarComponent implements OnInit {
   currentCar: CarDetail;
   carImagePath: string = 'https://localhost:5001';
   carPath:string = "";
+  filterText = "";
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute

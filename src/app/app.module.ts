@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule} from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarComponent } from './components/car/car.component';
-import { HttpClientModule} from '@angular/common/http'
 import { RentalComponent } from './components/rental/rental.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { BrandComponent } from './components/brand/brand.component';
@@ -12,6 +14,7 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { CarFilterPipePipe } from './pipes/car-filter-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -24,12 +27,14 @@ import { NgImageSliderModule } from 'ng-image-slider';
     CustomerComponent,
     CarDetailComponent,
     HomeComponent,
+    CarFilterPipePipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgImageSliderModule
+    NgImageSliderModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
