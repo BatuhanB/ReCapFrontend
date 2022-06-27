@@ -1,3 +1,7 @@
 #card-responsive{
    margin:auto auto;
 }
+.pagination{
+   margin-top: 10px;
+   justify-content: center;
+}

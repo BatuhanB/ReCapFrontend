@@ -16,12 +16,13 @@ export class CarComponent implements OnInit {
   dataLoaded: boolean = false;
   currentCar: CarDetail;
   carImagePath: string = 'https://localhost:5001';
-  carPath:string = "";
-  filterText = "";
+  carPath: string = '';
+  filterText = '';
+  pageNumber: number = 1;
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
-    private toastrService:ToastrService,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -30,8 +31,8 @@ export class CarComponent implements OnInit {
         this.getCarsByBrandId(params['brandId']);
       } else if (params['colorId']) {
         this.getCarsByColorId(params['colorId']);
-      }else if (params['carId']){
-        this.getCarDetails(params['carId'])
+      } else if (params['carId']) {
+        this.getCarDetails(params['carId']);
       } else {
         this.getCarDetail();
       }
@@ -50,21 +51,21 @@ export class CarComponent implements OnInit {
     });
   }
 
-  getCarDetail(){
-    return this.carService.getCarDetail().subscribe((response)=>{
+  getCarDetail() {
+    return this.carService.getCarDetail().subscribe((response) => {
       this.carDetails = response.data;
       this.carPath = this.carDetails[0].carImages[0].imagePath;
       this.dataLoaded = true;
-    })
+    });
   }
 
-  getCarDetails(carId:number){
-    return this.carService.getCarDetails(carId).subscribe((response)=>{
+  getCarDetails(carId: number) {
+    return this.carService.getCarDetails(carId).subscribe((response) => {
       this.carDetails = response.data;
       this.carPath = this.carDetails[0].carImages[0].imagePath;
       console.log(this.carDetails);
       this.dataLoaded = true;
-    })
+    });
   }
 
   getCarsByBrandId(brandId: number) {
@@ -81,7 +82,7 @@ export class CarComponent implements OnInit {
       this.dataLoaded = true;
     });
   }
-  rent(car:CarDetail){
-    this.toastrService.success("Kiralandı!",car.carName);
+  rent(car: CarDetail) {
+    this.toastrService.success('Kiralandı!', car.carName);
   }
 }

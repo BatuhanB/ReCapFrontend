@@ -17,6 +17,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { CarFilterPipePipe } from './pipes/car-filter-pipe.pipe';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ToastrModule } from 'ngx-toastr';
     HomeComponent,
     CarFilterPipePipe,
     
+    
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { ToastrModule } from 'ngx-toastr';
     NgImageSliderModule,
     FormsModule,
     BrowserAnimationsModule,
+    NgxPaginationModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     })

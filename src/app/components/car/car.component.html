@@ -5,17 +5,17 @@
     </div>
     <div class="col-md-10">
         <h1 style="text-align: center;">Kiralık Araçlar</h1>
-        <div class="mb-3" style="width: 972px;">
-            <label for="filterText" class="form-label" style="font-weight: bold;">Araç Adı Giriniz</label>
-            <input type="text" [(ngModel)] = "filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz" >
-          </div>
-          <div class="alert alert-success" *ngIf="filterText">
-            {{filterText}} aradiniz
-          </div>
+        <div class="mb-3" style="margin-right:12px;">
+            <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
+                placeholder="araç adı giriniz">
+        </div>
+        <div class="alert alert-success" *ngIf="filterText">
+            <span style="font-weight: bold;">{{filterText}}</span> aracını aradınız.
+        </div>
         <div *ngIf="dataLoaded == false" class="spinner-border text-info" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-        
+
         <!-- <table *ngIf="dataLoaded == true" class="table table-hover table-striped">
             <thead>
                 <tr>
@@ -42,19 +42,24 @@
             </tbody>
         </table>
     </div>  -->
-        <div class="row" *ngIf="dataLoaded == true"  >
-          
-            <div class="card" style="width: 20rem; margin:5px;"  *ngFor="let car of carDetails | carFilterPipe:filterText" >
+        <div class="row" *ngIf="dataLoaded == true">
+
+            <div class="card" style="width: 260px; margin:5px;"
+                *ngFor="let car of carDetails | carFilterPipe:filterText | paginate:{itemsPerPage:8,currentPage:pageNumber}">
                 <div style="width: 100%; height: 100%;">
-                    <img src="{{carImagePath}}{{car.carImages[0].imagePath}}" class="card-img-top" alt="..." style="margin-top: 12px;">
+                    <img src="{{carImagePath}}{{car.carImages[0].imagePath}}" class="card-img-top" alt="..."
+                        style="margin-top: 12px;">
                 </div>
                 <div class="card-body">
                     <h4 class="card-title">{{car.carName}} {{car.brandName}}</h4>
                     <h5 class="card-title">{{car.dailyPrice}}₺</h5>
-                    <p class="card-text">{{car.description.substring(0,car.description.substring(0,50).lastIndexOf(" "))}}...</p>
-                    <a href="#" (click)="setCurrentCar(car)"  class="btn btn-primary" routerLink="/cars/carDetails/{{car.carId}}">Details</a>
-                    <button type="button" (click)="rent(car)" class="btn btn-danger">Kirala</button>
+                    <p class="card-text">{{car.description.substring(0,car.description.substring(0,50).lastIndexOf("
+                        "))}}...</p>
+                    <a href="#" (click)="setCurrentCar(car)" class="btn btn-primary"
+                        routerLink="/cars/carDetails/{{car.carId}}">Detaylar</a>
+                    <button type="button" (click)="rent(car)" class="btn btn-danger" style="margin-left: 10px;">Kirala</button>
                 </div>
             </div>
+            <pagination-controls (pageChange)="pageNumber = $event" class="pagination"></pagination-controls>
         </div>
     </div>
