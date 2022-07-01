@@ -121,18 +121,28 @@ export class CarComponent implements OnInit {
         this.carDetails = response.data;
       });
   }
-  changeRouteLink(){
-    let route:string;
-    if (this.brandFilter && this.colorFilter) {
-      route = "cars/brand/" + this.brandFilter + "/color/" + this.colorFilter
-    }else if(this.colorFilter){
-      route = "cars/color/" + this.colorFilter
-    }else if(this.brandFilter){
-      route = "cars/brand/" + this.brandFilter
-    }else{
-      route = "cars"
+  // changeRouteLink(){
+  //   let route:string;
+  //   if (this.brandFilter && this.colorFilter) {
+  //     route = "cars/brand/" + this.brandFilter + "/color/" + this.colorFilter
+  //   }else if(this.colorFilter){
+  //     route = "cars/color/" + this.colorFilter
+  //   }else if(this.brandFilter){
+  //     route = "cars/brand/" + this.brandFilter
+  //   }else{
+  //     route = "cars"
+  //   }
+  //   console.log(route);
+  //   return this.router.navigateByUrl(route);
+  // }
+  doIt(){
+    if(this.colorFilter == 0 && this.brandFilter == 0){
+      return this.getCarDetail();
+    }else if(this.colorFilter == 0){
+      return this.getCarsByBrandId(this.brandFilter);
+    }else if(this.brandFilter == 0){
+      return this.getCarsByColorId(this.colorFilter);
     }
-    console.log(route);
-    return this.router.navigateByUrl(route);
+    return this.getCarDetailByColorIdAndBrandId(this.colorFilter,this.brandFilter);
   }
 }
