@@ -1,3 +1,5 @@
+import { Brand } from './../models/brand';
+import { Color } from './../models/color';
 import { CarDetail } from './../models/carDetail';
 import { Car } from './../models/car';
 import { ListResponseModel } from './../models/listResponseModel';
@@ -31,6 +33,19 @@ export class CarService {
   }
   getCarDetails(carId:number):Observable<ListResponseModel<CarDetail>>{
     let currentApi = this.apiUrl + "Cars/getcardetails?id=" + carId;
+    return this.httpClient.get<ListResponseModel<CarDetail>>(currentApi);
+  }
+  getAllColors():Observable<ListResponseModel<Color>>{
+    let currentApi = this.apiUrl + "Colors/getall";
+    return this.httpClient.get<ListResponseModel<Color>>(currentApi);
+  }
+
+  getAllBrands():Observable<ListResponseModel<Brand>>{
+    let currentApi = this.apiUrl + "Brands/getall";
+    return this.httpClient.get<ListResponseModel<Brand>>(currentApi);
+  }
+  getCarDetailByColorIdAndBrandId(colorId:number,brandId:number):Observable<ListResponseModel<CarDetail>>{
+    let currentApi = this.apiUrl+ "Cars/getcoloridandbrandid?colorId=" + colorId + "&brandId=" + brandId;
     return this.httpClient.get<ListResponseModel<CarDetail>>(currentApi);
   }
 }

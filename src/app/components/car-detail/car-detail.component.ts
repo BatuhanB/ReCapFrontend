@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { CarImage } from './../../models/carImage';
 import { CarDetailService } from './../../services/car-detail.service';
 import { CarDetail } from './../../models/carDetail';
@@ -19,7 +20,8 @@ export class CarDetailComponent implements OnInit {
   carImagePath: string = 'https://localhost:5001';
   constructor(
     private carDetailService: CarDetailService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toastrService:ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +48,9 @@ export class CarDetailComponent implements OnInit {
       console.log(this.carDetail.carImages);
       this.dataLoaded = true;
     });
+  }
+  rent(car: CarDetail) {
+    this.toastrService.success('Kiralandı!', car.carName);
   }
  
 }

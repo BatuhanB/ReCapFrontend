@@ -1,4 +1,7 @@
+import { Color } from './../../models/color';
+import { Brand } from './../../models/brand';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 import { CarDetail } from './../../models/carDetail';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
@@ -13,20 +16,29 @@ import { Component, OnInit } from '@angular/core';
 export class CarComponent implements OnInit {
   cars: Car[] = [];
   carDetails: CarDetail[] = [];
+  brands: Brand[] = [];
+  colors: Color[] = [];
   dataLoaded: boolean = false;
   currentCar: CarDetail;
   carImagePath: string = 'https://localhost:5001';
   carPath: string = '';
   filterText = '';
   pageNumber: number = 1;
+  brandFilter: number = 0;
+  colorFilter: number = 0;
+  clearRoute:string = "";
+
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
+      this.getAllBrands();
+      this.getAllColors();
       if (params['brandId']) {
         this.getCarsByBrandId(params['brandId']);
       } else if (params['colorId']) {
@@ -37,6 +49,15 @@ export class CarComponent implements OnInit {
         this.getCarDetail();
       }
     });
+  }
+
+  getSelectedColor(colorId: number) {
+    if (this.colorFilter == colorId) return true;
+    else return false;
+  }
+  getSelectedBrand(brandId: number) {
+    if (this.brandFilter == brandId) return true;
+    else return false;
   }
 
   setCurrentCar(car: CarDetail) {
@@ -82,7 +103,36 @@ export class CarComponent implements OnInit {
       this.dataLoaded = true;
     });
   }
-  rent(car: CarDetail) {
-    this.toastrService.success('Kiralandı!', car.carName);
+
+  getAllColors() {
+    this.carService.getAllColors().subscribe((response) => {
+      this.colors = response.data;
+    });
+  }
+  getAllBrands() {
+    this.carService.getAllBrands().subscribe((response) => {
+      this.brands = response.data;
+    });
+  }
+  getCarDetailByColorIdAndBrandId(colorId: number, brandId: number) {
+    this.carService
+      .getCarDetailByColorIdAndBrandId(colorId, brandId)
+      .subscribe((response) => {
+        this.carDetails = response.data;
+      });
+  }
+  changeRouteLink(){
+    let route:string;
+    if (this.brandFilter && this.colorFilter) {
+      route = "cars/brand/" + this.brandFilter + "/color/" + this.colorFilter
+    }else if(this.colorFilter){
+      route = "cars/color/" + this.colorFilter
+    }else if(this.brandFilter){
+      route = "cars/brand/" + this.brandFilter
+    }else{
+      route = "cars"
+    }
+    console.log(route);
+    return this.router.navigateByUrl(route);
   }
 }

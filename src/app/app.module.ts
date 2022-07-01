@@ -18,6 +18,9 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { CarFilterPipePipe } from './pipes/car-filter-pipe.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FooterComponent } from './components/footer/footer.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CarDetailComponent,
     HomeComponent,
     CarFilterPipePipe,
-    
+    FooterComponent,
+    CartComponent,
     
   ],
   imports: [
@@ -42,6 +46,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
+    MDBBootstrapModule.forRoot(),
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     })

@@ -3,8 +3,26 @@
         <app-brand></app-brand>
         <app-color></app-color>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10" >
         <h1 style="text-align: center;">Kiralık Araçlar</h1>
+        <div class="col-md-10" style="margin:5px 0 10px 0;">
+            <div class="col-md-4"  style="display: inline-block;">
+                <select [(ngModel)]="colorFilter" class="form-select" aria-label="Default select example">
+                    <option value=0>Renk Seçiniz</option>
+                    <option *ngFor="let color of colors" [value]="color.id" [selected]="getSelectedColor(color.id)">
+                        {{color.name}}</option>
+                </select>
+            </div>
+            <div class="col-md-4" style="display: inline-block;  margin-left: 25px;">
+                <select [(ngModel)]="brandFilter" class="form-select" aria-label="Default select example">
+                    <option value=0>Marka Seçiniz</option>
+                    <option *ngFor="let brand of brands" [value]="brand.id" [selected]="getSelectedBrand(brand.id)">
+                        {{brand.name}}</option>
+                </select>
+            </div>
+            <button type="button"  (click)="changeRouteLink()" class="btn btn-danger" style="margin:0 0 5px 25px;">Filtrele</button>
+        </div>
+
         <div class="mb-3" style="margin-right:12px;">
             <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
                 placeholder="araç adı giriniz">
@@ -43,7 +61,6 @@
         </table>
     </div>  -->
         <div class="row" *ngIf="dataLoaded == true">
-
             <div class="card" style="width: 260px; margin:5px;"
                 *ngFor="let car of carDetails | carFilterPipe:filterText | paginate:{itemsPerPage:8,currentPage:pageNumber}">
                 <div style="width: 100%; height: 100%;">
@@ -57,9 +74,9 @@
                         "))}}...</p>
                     <a href="#" (click)="setCurrentCar(car)" class="btn btn-primary"
                         routerLink="/cars/carDetails/{{car.carId}}">Detaylar</a>
-                    <button type="button" (click)="rent(car)" class="btn btn-danger" style="margin-left: 10px;">Kirala</button>
                 </div>
             </div>
             <pagination-controls (pageChange)="pageNumber = $event" class="pagination"></pagination-controls>
         </div>
     </div>
+</div>
