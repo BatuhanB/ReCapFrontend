@@ -21,6 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FooterComponent } from './components/footer/footer.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CartComponent } from './components/cart/cart.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { CartComponent } from './components/cart/cart.component';
     FormsModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
+    FontAwesomeModule,
     MDBBootstrapModule.forRoot(),
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"

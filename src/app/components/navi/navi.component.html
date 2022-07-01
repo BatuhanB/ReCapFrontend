@@ -1,34 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar" style="background-color: rgb(5, 5, 5) !important;">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/home">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/home">Anasayfa</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/cars">Arabalar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/brands">Markalar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/colors">Renkler</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/customers">Kullanicilar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/rentals">Kiralamalar</a>
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
+<nav class="navbar navbar-expand-lg navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/home">CarRental</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/home">Anasayfa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/cars">Arabalar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/brands">Markalar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/colors">Renkler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/customers">Kullanıcılar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/rentals">Kiralamalar</a>
+        </li>
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <fa-icon [icon]="cart" [styles]="{'color': 'yellow'}"> </fa-icon> Sepet
+          </a>
+          <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Urun1</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item">
+                Sepete Git
+              </a></li>
+          </ul>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
