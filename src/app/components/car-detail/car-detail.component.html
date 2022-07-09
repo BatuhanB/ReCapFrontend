@@ -1,7 +1,7 @@
 <div>
   <div class="container-lg" style="margin-top: 10px;">
    
-    <div class="card" *ngFor="let car of carDetails" style="margin: 0 auto; width: 870px;">
+    <div class="card" *ngFor="let car of carDetails" style="margin: 20px auto 20px auto; width: 870px;">
       <div class="card-title" style="text-align: center;margin-top: 10px;">
         <h3>{{car.carName}} {{car.brandName}}</h3>
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"
@@ -45,7 +45,7 @@
       <div class="card-footer">
         <p>{{car.description}}</p>
       </div>
-      <button type="button" (click)="rent(car)" class="btn btn-danger" style="margin-left: 10px;">Kirala</button>
+      <button type="button" (click)="addToCart(car)" class="btn btn-danger" style="margin: 0 20px 10px 20px;">Kirala</button>
     </div>
   </div>
 </div>

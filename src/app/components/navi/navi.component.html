@@ -25,20 +25,7 @@
         <li class="nav-item">
           <a class="nav-link" href="#" routerLink="/rentals">Kiralamalar</a>
         </li>
-        <li class="nav-item dropdown ">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <fa-icon [icon]="cart" [styles]="{'color': 'yellow'}"> </fa-icon> Sepet
-          </a>
-          <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Urun1</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item">
-                Sepete Git
-              </a></li>
-          </ul>
+       <app-cart></app-cart>
       </ul>
     </div>
   </div>

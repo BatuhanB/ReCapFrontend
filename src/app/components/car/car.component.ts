@@ -134,7 +134,7 @@ export class CarComponent implements OnInit {
     this.brandFilter = 0;
     this.colorFilter = 0;
     this.getCarDetail();
-    this.toastrService.info("Temizlendi!")
+    this.toastrService.info("Filtreleme Temizlendi!");
   }
 }
 

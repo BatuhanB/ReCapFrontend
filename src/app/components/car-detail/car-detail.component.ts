@@ -1,3 +1,4 @@
+import { CartService } from './../../services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { CarImage } from './../../models/carImage';
 import { CarDetailService } from './../../services/car-detail.service';
@@ -21,7 +22,8 @@ export class CarDetailComponent implements OnInit {
   constructor(
     private carDetailService: CarDetailService,
     private activatedRoute: ActivatedRoute,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private cartService:CartService
   ) {}
 
   ngOnInit(): void {
@@ -53,4 +55,8 @@ export class CarDetailComponent implements OnInit {
     this.toastrService.success('Kiralandı!', car.carName);
   }
  
+  addToCart(carDetail:CarDetail){
+    this.toastrService.success("Added to the cart " , carDetail.carName+  " "+ carDetail.brandName );
+    this.cartService.addToCart(carDetail);
+  }
 }

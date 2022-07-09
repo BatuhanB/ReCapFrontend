@@ -1,9 +1,29 @@
-<li class="nav-item dropdown" dropdown>
-    <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-      Sepet<span class="caret"></span></a>
-    <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-      <a class="dropdown-item waves-light" mdbWavesEffect href="#">Urun</a>
-      <div class="divider dropdown-divider"></div>
-      <a class="dropdown-item waves-light" mdbWavesEffect href="#">Sepete Git</a>
-    </div>
-  </li>
+<!-- <li class="nav-item dropdown" dropdown>
+  <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+    Sepet<span class="caret"></span></a>
+  <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+<li><a class="dropdown-item" *ngFor="let cartItem of cartItems">
+    <span class="position-absolute start-100 translate-middle badge rounded-pill bg-danger">{{cartItem.quantity}}</span>
+    <span class="badge bg-danger" (click)="removeFromCart(cartItem.carDetail)">Sil</span>
+    {{cartItem.carDetail.carName + cartItem.carDetail.brandName}}</a></li>
+<li>
+  <hr class="dropdown-divider">
+</li>
+<li><a class="dropdown-item">Sepete Git</a></li>
+</div>
+</li> -->
+<li *ngIf="cartItems.length > 0" class="nav-item dropdown " dropdown>
+  <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+    <fa-icon [icon]="cart" [styles]="{'color': 'aqua'}"> </fa-icon> Sepet<span class="caret"></span>
+  </a>
+  <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+<li><a class="dropdown-item" *ngFor="let cartItem of cartItems">
+    <span class="position-absolute start-100 translate-middle badge rounded-pill bg-danger">{{cartItem.quantity}}</span>
+    <span class="badge bg-danger" (click)="removeFromCart(cartItem.carDetail)">Sil</span>
+    {{cartItem.carDetail.carName +" "+ cartItem.carDetail.brandName}}</a></li>
+<li>
+  <hr class="dropdown-divider">
+</li>
+<li><a class="dropdown-item">Sepete Git</a></li>
+</div>
+</li>
