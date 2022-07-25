@@ -1,3 +1,4 @@
+import { CartItem } from './../../models/cartItem';
 import { CartService } from './../../services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { CarImage } from './../../models/carImage';
@@ -14,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CarDetailComponent implements OnInit {
   carDetails: CarDetail[] = [];
   carImages: CarImage[];
+  cartItems:CartItem;
   carDetail:CarDetail;
   carImagePaths: string = '';
   dataLoaded: boolean = false;
@@ -40,11 +42,6 @@ export class CarDetailComponent implements OnInit {
     return this.carDetailService.getCarDetails(carId).subscribe((response) => {
       this.carDetails = response.data;
       this.carDetail = response?.data[0];
-      
-      // console.log(this.carDetail.carImages[0].imagePath);
-      // console.log(this.carDetail.carImages[1].imagePath);
-      // console.log(this.carDetail.carImages[2].imagePath);
-      // console.log(this.carDetail.carImages[3].imagePath);
       this.carImagePaths = this.carDetails[0].carImages[0]?.imagePath;
       this.carImages = this.carDetails[0]?.carImages;
       console.log(this.carDetail.carImages);
@@ -56,6 +53,8 @@ export class CarDetailComponent implements OnInit {
   }
  
   addToCart(carDetail:CarDetail){
+    // localStorage.setItem('cartItems',JSON.stringify(carDetail));
+    // this.cartItems = localStorage.getItem(JSON.stringify(cartItems));
     this.toastrService.success("Added to the cart " , carDetail.carName+  " "+ carDetail.brandName );
     this.cartService.addToCart(carDetail);
   }

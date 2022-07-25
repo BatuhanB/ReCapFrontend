@@ -70,10 +70,10 @@
                 </div>
                 <div class="card-body">
                     <h4 class="card-title">{{car.carName}} {{car.brandName}}</h4>
-                    <h5 class="card-title">{{car.dailyPrice}}₺</h5>
+                    <h5 class="card-title">{{car.dailyPrice | currency}}</h5>
                     <p class="card-text">{{car.description.substring(0,car.description.substring(0,50).lastIndexOf("
                         "))}}...</p>
-                    <a href="#" (click)="setCurrentCar(car)" class="btn btn-primary"
+                    <a href="#" (click)="setCurrentCar(car)" class="btn button-6"
                         routerLink="/cars/carDetails/{{car.carId}}">Detaylar</a>
                 </div>
             </div>

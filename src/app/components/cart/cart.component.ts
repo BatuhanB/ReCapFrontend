@@ -13,6 +13,7 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 export class CartComponent implements OnInit {
   cart = faCartShopping;
   cartItems: CartItem[];
+  totalQuantity:number = 0;
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {

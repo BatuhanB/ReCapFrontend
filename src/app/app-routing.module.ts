@@ -1,3 +1,4 @@
+import { CartDetailComponent } from './components/cart-detail/cart-detail.component';
 import { HomeComponent } from './components/home/home.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { CustomerComponent } from './components/customer/customer.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:"",pathMatch:"full",component:HomeComponent},
   {path:"home",component:HomeComponent},
   {path:"cars",component:CarComponent},
+  {path:"cartDetail",component:CartDetailComponent},
   {path:"cars/carDetails/:carId",component:CarDetailComponent},
   {path:"cars/brand/:brandId",component:CarComponent},
   {path:"cars/color/:colorId",component:CarComponent},

@@ -1,0 +1,38 @@
+<div class="container" style="margin-top:10px;" *ngIf="cartItems">
+    <div class="row">
+    <div class="col-md-12" *ngFor="let cartItem of cartItems">
+        <div class="Cart-Container">
+            <div class="Header">
+                <h3 class="Heading">Kiralık Araç</h3>
+            </div>
+            <div class="Cart-Items">
+                <div class="image-box">
+                    <img src="{{carImagePath}}{{cartItem.carDetail.carImages[0].imagePath}}" style=" height: 120px" />
+                </div>
+                <div class="about">
+                    <h1 class="title">{{cartItem.carDetail.carName}}</h1>
+                    <h3 class="subtitle">{{cartItem.carDetail.brandName}}</h3>
+                </div>
+            </div>
+            <div class="counter">
+                <div class="count">{{cartItem.quantity}}</div>
+            </div>
+            <div class="prices">
+                <div class="amount">{{cartItem.carDetail.dailyPrice | currency}}</div>
+                <div class="remove"><u>Kaldır</u></div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="col-md-4">
+        <div class="checkout">
+            <div class="total">
+                <div>
+                    <div class="items">2 items</div>
+                </div>
+                <div class="total-amount">$6.18</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

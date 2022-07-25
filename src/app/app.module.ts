@@ -22,6 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CartComponent } from './components/cart/cart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CartDetailComponent } from './components/cart-detail/cart-detail.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CarFilterPipePipe,
     FooterComponent,
     CartComponent,
+    CartDetailComponent,
     
   ],
   imports: [
