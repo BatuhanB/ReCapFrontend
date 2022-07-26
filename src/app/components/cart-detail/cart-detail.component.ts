@@ -1,3 +1,6 @@
+import { CartKey } from './../../models/localStorageKey';
+import { CarDetail } from './../../models/carDetail';
+import { LocalStorageService } from './../../services/local-storage.service';
 import { CarDetailService } from './../../services/car-detail.service';
 import { CarImage } from './../../models/carImage';
 import { CartService } from './../../services/cart.service';
@@ -15,8 +18,10 @@ export class CartDetailComponent implements OnInit {
   carImagePath: string = 'https://localhost:5001';
   selectedCarId:number;
   totalRentPrice:number;
+  
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private localStorageService:LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -26,9 +31,15 @@ export class CartDetailComponent implements OnInit {
   CartDetailList() {
     this.cartItems = this.cartService.cartList();
     this.selectedCarId = this.cartItems[0].carDetail.carId;
+    let checkIfExist = this.localStorageService.getStorage(CartKey);
+    console.log(checkIfExist)
   }
 
   ListTotalPrice(){
     return this.cartItems[0].carDetail.dailyPrice
+  }
+  removeFromCart(carDetail:CarDetail){
+    this.cartService.removeFromCart(carDetail);
+    this.localStorageService.removeFromStorage(CartKey)
   }
 }

@@ -1,3 +1,4 @@
+import { CartKey } from './../../models/localStorageKey';
 import { LocalStorageService } from './../../services/local-storage.service';
 import { CartItem } from './../../models/cartItem';
 import { CartService } from './../../services/cart.service';
@@ -16,20 +17,18 @@ import { ActivatedRoute } from '@angular/router';
 export class CarDetailComponent implements OnInit {
   carDetails: CarDetail[] = [];
   carImages: CarImage[];
-  cartItems:CartItem;
-  carDetail:CarDetail;
+  cartItems: CartItem;
+  carDetail: CarDetail;
   carImagePaths: string = '';
   dataLoaded: boolean = false;
-  rentalKey:string = "cartItems";
-
 
   carImagePath: string = 'https://localhost:5001';
   constructor(
     private carDetailService: CarDetailService,
     private activatedRoute: ActivatedRoute,
-    private toastrService:ToastrService,
-    private cartService:CartService,
-    private localStorageService:LocalStorageService
+    private toastrService: ToastrService,
+    private cartService: CartService,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -55,10 +54,14 @@ export class CarDetailComponent implements OnInit {
   rent(car: CarDetail) {
     this.toastrService.success('Kiralandı!', car.carName);
   }
- 
-  addToCart(carDetail:CarDetail){
-    this.localStorageService.setToStorage(this.rentalKey,carDetail);
-    this.toastrService.success("Added to the cart " , carDetail.carName+  " "+ carDetail.brandName );
+
+  addToCart(carDetail: CarDetail) {
+    this.localStorageService.setToStorage(CartKey, carDetail);
+    this.localStorageService.getStorage(CartKey);
+    this.toastrService.success(
+      'Added to the cart',
+      carDetail.carName + ' ' + carDetail.brandName
+    );
     this.cartService.addToCart(carDetail);
   }
 }

@@ -5,6 +5,7 @@ import { CartService } from './../../services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/models/cartItem';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { CartKey } from 'src/app/models/localStorageKey';
 
 @Component({
   selector: 'app-cart',
@@ -24,17 +25,16 @@ export class CartComponent implements OnInit {
   }
   
   test():boolean{
-    this.isSave =  this.localStorageService.isSetToStorage('cartItems');
+    this.isSave =  this.localStorageService.isSetToStorage(CartKey);
     return this.isSave;
   }
 
   listCart() {
-    this.localStorageService.getStorage('cartItems');
     this.cartItems = this.cartService.cartList();
   }
 
   removeFromCart(carDetail:CarDetail){
-    this.localStorageService.removeFromStorage('cartItems');
+    this.localStorageService.removeFromStorage(CartKey);
     this.cartService.removeFromCart(carDetail);
   }
 }
