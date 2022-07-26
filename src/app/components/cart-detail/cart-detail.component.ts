@@ -15,7 +15,6 @@ export class CartDetailComponent implements OnInit {
   carImagePath: string = 'https://localhost:5001';
   selectedCarId:number;
   totalRentPrice:number;
-
   constructor(
     private cartService: CartService
   ) {}

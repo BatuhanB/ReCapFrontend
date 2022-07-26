@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../../services/local-storage.service';
 import { CartItem } from './../../models/cartItem';
 import { CartService } from './../../services/cart.service';
 import { ToastrService } from 'ngx-toastr';
@@ -19,13 +20,16 @@ export class CarDetailComponent implements OnInit {
   carDetail:CarDetail;
   carImagePaths: string = '';
   dataLoaded: boolean = false;
+  rentalKey:string = "cartItems";
+
 
   carImagePath: string = 'https://localhost:5001';
   constructor(
     private carDetailService: CarDetailService,
     private activatedRoute: ActivatedRoute,
     private toastrService:ToastrService,
-    private cartService:CartService
+    private cartService:CartService,
+    private localStorageService:LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -53,8 +57,7 @@ export class CarDetailComponent implements OnInit {
   }
  
   addToCart(carDetail:CarDetail){
-    // localStorage.setItem('cartItems',JSON.stringify(carDetail));
-    // this.cartItems = localStorage.getItem(JSON.stringify(cartItems));
+    this.localStorageService.setToStorage(this.rentalKey,carDetail);
     this.toastrService.success("Added to the cart " , carDetail.carName+  " "+ carDetail.brandName );
     this.cartService.addToCart(carDetail);
   }

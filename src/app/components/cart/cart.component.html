@@ -12,7 +12,7 @@
 <li><a class="dropdown-item">Sepete Git</a></li>
 </div>
 </li> -->
-<li *ngIf="cartItems.length > 0" class="nav-item dropdown " dropdown>
+<li *ngIf="isSave || cartItems.length > 0" class="nav-item dropdown " dropdown>
   <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
     <fa-icon [icon]="cart" [styles]="{'color': 'aqua'}"> </fa-icon> Sepet<span class="caret"></span>
   </a>
