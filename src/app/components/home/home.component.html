@@ -1,1 +1,10 @@
-<h1 style="text-align: center;">Welcome To Homepage of CarRental</h1>
+<h1 class="display-4 font-weight-bold" id="page-headers">Welcome To Homepage of CarRental</h1>
+<owl-carousel-o [options]="customOptions" style="margin:0 auto;">
+
+    <ng-container *ngIf="carImages" >
+        <ng-template carouselSlide *ngFor="let images of carImages">
+            <img class="images" src="{{carImagePath}}{{images.imagePath}}" >           
+        </ng-template>
+    </ng-container>
+
+</owl-carousel-o>

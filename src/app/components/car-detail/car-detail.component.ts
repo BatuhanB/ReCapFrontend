@@ -49,6 +49,7 @@ export class CarDetailComponent implements OnInit {
       this.carImages = this.carDetails[0]?.carImages;
       console.log(this.carDetail.carImages);
       this.dataLoaded = true;
+      console.log(this.carImagePaths)
     });
   }
   rent(car: CarDetail) {
