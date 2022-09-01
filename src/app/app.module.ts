@@ -2,7 +2,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http'
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +24,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CartComponent } from './components/cart/cart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CartDetailComponent } from './components/cart-detail/cart-detail.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { CartDetailComponent } from './components/cart-detail/cart-detail.compon
     FooterComponent,
     CartComponent,
     CartDetailComponent,
+    BrandAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,7 @@ import { CartDetailComponent } from './components/cart-detail/cart-detail.compon
     NgxPaginationModule,
     FontAwesomeModule,
     CarouselModule,
+    ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"

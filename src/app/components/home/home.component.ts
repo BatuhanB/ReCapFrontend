@@ -51,7 +51,6 @@ export class HomeComponent implements OnInit {
     this.carImageService.GetAllImages().subscribe((response)=>{
       this.carImages = response.data;
       let array = response.data.filter(x=>x.carImageId == x.carImageId).map(x=>x.carImageId > 1).reduce(x=>x.valueOf());
-      console.log(array)
       //console.log(this.carImages)
     })
   }
@@ -59,7 +58,6 @@ export class HomeComponent implements OnInit {
     this.carImageService.GetAllImages().subscribe((response)=>{
       this.carImages = response.data;
       let array = response.data.filter(x=>x.carImageId).length;
-      console.log(array)
       //console.log(this.carImages)
     })
   }
