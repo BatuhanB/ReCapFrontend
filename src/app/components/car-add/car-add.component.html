@@ -1,0 +1,57 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Marka Ekle</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="carAddForm">
+                        <div class="form-group">
+                            <label for="carName">Araba Modeli</label>
+                            <input type="text" id="carName" formControlName="carName" class="form-control"
+                                placeholder="Araba Modeli Giriniz">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="dailyPrice">Günlük Fiyat</label>
+                            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control"
+                                placeholder="Günlük Fiyat Giriniz">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="modelYear">Model Yılı</label>
+                            <input type="text" id="modelYear" formControlName="modelYear" class="form-control"
+                                placeholder="Model Yılı Giriniz">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="description">Açıklama</label>
+                            <textarea type="text" id="description" formControlName="description" class="form-control"
+                                placeholder="Açıklama Giriniz"></textarea>
+                        </div>
+                        <br>
+                        <div class="col-md-6"  style="display: inline-block;">
+                            <select (ngModelChange)="onSelectedColor($event)" class="form-select" formControlName="colorId" aria-label="Default select example">
+                                <option value=0>Renk Seçiniz</option>
+                                <option *ngFor="let color of colors" [value]="color.id">
+                                    {{color.name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6" style="display: inline-block; ">
+                            <select (ngModelChange)="onSelectedBrand($event)" class="form-select" formControlName="brandId" aria-label="Default select example">
+                                <option value=0>Marka Seçiniz</option>
+                                <option *ngFor="let brand of brands" [value]="brand.id" >
+                                    {{brand.name}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-fill btn-primary" (click)="add()">Ekle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

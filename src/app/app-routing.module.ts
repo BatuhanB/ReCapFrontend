@@ -1,3 +1,6 @@
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { OperationsComponent } from './components/operations/operations.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { CartDetailComponent } from './components/cart-detail/cart-detail.component';
 import { HomeComponent } from './components/home/home.component';
@@ -23,6 +26,9 @@ const routes: Routes = [
   {path:"colors",component:ColorComponent},
   {path:"customers",component:CustomerComponent},
   {path:"brands/add",component:BrandAddComponent},
+  {path:"colors/add",component:ColorAddComponent},
+  {path:"cars/add",component:CarAddComponent},
+  {path:"operations",component:OperationsComponent},
 ];
 
 @NgModule({

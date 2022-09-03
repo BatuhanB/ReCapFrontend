@@ -1,5 +1,5 @@
 import { ToastrService } from 'ngx-toastr';
-import { BrandService } from './../../services/brand.service';
+import { ColorService } from './../../services/color.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -7,32 +7,34 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+
 @Component({
-  selector: 'app-brand-add',
-  templateUrl: './brand-add.component.html',
-  styleUrls: ['./brand-add.component.css'],
+  selector: 'app-color-add',
+  templateUrl: './color-add.component.html',
+  styleUrls: ['./color-add.component.css'],
 })
-export class BrandAddComponent implements OnInit {
-  brandAddForm: FormGroup;
+export class ColorAddComponent implements OnInit {
+  colorAddForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
-    private brandService: BrandService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private colorService: ColorService
   ) {}
 
   ngOnInit(): void {
-    this.CreateBrandAddForm();
+    this.createColorAddForm();
   }
 
-  CreateBrandAddForm() {
-    this.brandAddForm = this.formBuilder.group({
+  createColorAddForm() {
+    this.colorAddForm = this.formBuilder.group({
       name: ['', Validators.required],
     });
   }
-  add() {
-    if (this.brandAddForm.valid) {
-      let brandModel = Object.assign({}, this.brandAddForm.value);
-      this.brandService.add(brandModel).subscribe(
+
+  addColor() {
+    if (this.colorAddForm.valid) {
+      let colorModel = Object.assign({}, this.colorAddForm.value);
+      this.colorService.addColors(colorModel).subscribe(
         (response) => {
           this.toastrService.success(response.message, 'Başarılı!');
         },

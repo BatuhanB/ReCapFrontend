@@ -25,6 +25,9 @@ import { CartComponent } from './components/cart/cart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CartDetailComponent } from './components/cart-detail/cart-detail.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { OperationsComponent } from './components/operations/operations.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
 
 
 @NgModule({
@@ -43,6 +46,9 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
     CartComponent,
     CartDetailComponent,
     BrandAddComponent,
+    OperationsComponent,
+    ColorAddComponent,
+    CarAddComponent,
   ],
   imports: [
     BrowserModule,
