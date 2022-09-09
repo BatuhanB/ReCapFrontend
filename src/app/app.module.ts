@@ -28,6 +28,7 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { OperationsComponent } from './components/operations/operations.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
+import { CarImageAddComponent } from './components/car-image-add/car-image-add.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { CarAddComponent } from './components/car-add/car-add.component';
     OperationsComponent,
     ColorAddComponent,
     CarAddComponent,
+    CarImageAddComponent,
   ],
   imports: [
     BrowserModule,

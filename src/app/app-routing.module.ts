@@ -1,3 +1,4 @@
+import { CarImageAddComponent } from './components/car-image-add/car-image-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { OperationsComponent } from './components/operations/operations.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path:"brands/add",component:BrandAddComponent},
   {path:"colors/add",component:ColorAddComponent},
   {path:"cars/add",component:CarAddComponent},
+  {path:"carImages/add",component:CarImageAddComponent},
   {path:"operations",component:OperationsComponent},
 ];
 

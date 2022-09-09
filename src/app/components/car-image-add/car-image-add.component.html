@@ -1,0 +1,34 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Araba Resim Ekleme</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="carImageAddForm">
+                        <div class="col-md-6" style="display: inline-block; ">
+                            <select (ngModelChange)="onSelectedCar($event)" class="form-select"
+                                formControlName="brandId" aria-label="Default select example" ngModel="0">
+                                <option value="0">Marka Seçiniz</option>
+                                <option *ngFor="let car of cars" [value]="car.id">
+                                    {{car.carName}}</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="carName">Resim Yükleyiniz</label>
+                            <input accept="imagePath" class="form-control" type="file">
+                            <!-- <input type="text" id="carName" formControlName="carName" class="form-control"
+                                placeholder="Araba Modeli Giriniz"> -->
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-fill btn-primary" (click)="add()">Ekle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

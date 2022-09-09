@@ -32,17 +32,19 @@
                                 placeholder="Açıklama Giriniz"></textarea>
                         </div>
                         <br>
-                        <div class="col-md-6"  style="display: inline-block;">
-                            <select (ngModelChange)="onSelectedColor($event)" class="form-select" formControlName="colorId" aria-label="Default select example">
-                                <option value=0>Renk Seçiniz</option>
+                        <div class="col-md-6" style="display: inline-block;">
+                            <select (ngModelChange)="onSelectedColor($event)" class="form-select"
+                                formControlName="colorId" aria-label="Default select example" ngModel="0">
+                                <option value="0">Renk Seçiniz</option>
                                 <option *ngFor="let color of colors" [value]="color.id">
                                     {{color.name}}</option>
                             </select>
                         </div>
                         <div class="col-md-6" style="display: inline-block; ">
-                            <select (ngModelChange)="onSelectedBrand($event)" class="form-select" formControlName="brandId" aria-label="Default select example">
-                                <option value=0>Marka Seçiniz</option>
-                                <option *ngFor="let brand of brands" [value]="brand.id" >
+                            <select (ngModelChange)="onSelectedBrand($event)" class="form-select"
+                                formControlName="brandId" aria-label="Default select example" ngModel="0">
+                                <option value="0">Marka Seçiniz</option>
+                                <option *ngFor="let brand of brands" [value]="brand.id">
                                     {{brand.name}}</option>
                             </select>
                         </div>
