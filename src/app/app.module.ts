@@ -68,7 +68,9 @@ import { CarImageAddComponent } from './components/car-image-add/car-image-add.c
       positionClass:"toast-bottom-right"
     })
   ],
-  providers: [],
+  providers: [
+    {useValue:'baseUrl',provide:'',multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

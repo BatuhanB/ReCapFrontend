@@ -65,7 +65,7 @@
             <div class="card" style="width: 260px; margin:5px;"
                 *ngFor="let car of carDetails | carFilterPipe:filterText | paginate:{itemsPerPage:8,currentPage:pageNumber}">
                 <div style="width: 100%; height: 100%;">
-                    <img src="{{carImagePath}}{{car.carImages[0].imagePath}}" class="card-img-top" alt="..."
+                    <img src="{{carImagePath}}{{car.carImages[0].imagePath}}" class="card-img-top" alt="{{car.carName}}"
                         style="margin-top: 12px;">
                 </div>
                 <div class="card-body">
