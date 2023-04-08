@@ -2,16 +2,14 @@ import { ResponseModel } from './../models/responseModel';
 import { ListResponseModel } from './../models/listResponseModel';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Color } from '../models/color';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ColorService {
-  apiUrl = 'https://localhost:5001/api/Colors/';
-
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,@Inject('baseUrl') private apiUrl:string) {}
 
   getColors(): Observable<ListResponseModel<Color>> {
     let currentApi = this.apiUrl + 'getall';

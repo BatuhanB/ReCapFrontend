@@ -6,14 +6,13 @@ import { Car } from './../models/car';
 import { ListResponseModel } from './../models/listResponseModel';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CarService {
-  apiUrl = 'https://localhost:5001/api/';
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,@Inject('baseUrl') private apiUrl:string) {}
 
   addCars(car: Car): Observable<ResponseModel> {
     let currentApi = this.apiUrl + 'Cars/add';

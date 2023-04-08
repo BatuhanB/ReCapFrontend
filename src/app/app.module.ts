@@ -69,7 +69,7 @@ import { CarImageAddComponent } from './components/car-image-add/car-image-add.c
     })
   ],
   providers: [
-    {useValue:'baseUrl',provide:'',multi:true}
+    {provide:'baseUrl',useValue:'https://localhost:5001/api/',multi:true}
   ],
   bootstrap: [AppComponent]
 })
