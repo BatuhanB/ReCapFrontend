@@ -5,8 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { CarService } from './../../services/car.service';
 import { Component, OnInit } from '@angular/core';
 import {
-  FormGroup,
-  FormBuilder,
+  UntypedFormGroup,
+  UntypedFormBuilder,
   FormControl,
   Validators,
 } from '@angular/forms';
@@ -18,7 +18,7 @@ import { Brand } from 'src/app/models/brand';
   styleUrls: ['./car-add.component.css'],
 })
 export class CarAddComponent implements OnInit {
-  carAddForm: FormGroup;
+  carAddForm: UntypedFormGroup;
   brands: Brand[] = [];
   colors: Color[] = [];
 
@@ -28,7 +28,7 @@ export class CarAddComponent implements OnInit {
   constructor(
     private carService: CarService,
     private toastrService: ToastrService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private brandService: BrandService,
     private colorService: ColorService
   ) {}

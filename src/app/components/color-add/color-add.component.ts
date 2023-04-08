@@ -2,8 +2,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ColorService } from './../../services/color.service';
 import { Component, OnInit } from '@angular/core';
 import {
-  FormGroup,
-  FormBuilder,
+  UntypedFormGroup,
+  UntypedFormBuilder,
   FormControl,
   Validators,
 } from '@angular/forms';
@@ -14,9 +14,9 @@ import {
   styleUrls: ['./color-add.component.css'],
 })
 export class ColorAddComponent implements OnInit {
-  colorAddForm: FormGroup;
+  colorAddForm: UntypedFormGroup;
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private toastrService: ToastrService,
     private colorService: ColorService
   ) {}
