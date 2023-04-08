@@ -4,8 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { CarImageService } from './../../services/car-image.service';
 import { Component, OnInit } from '@angular/core';
 import {
-  UntypedFormGroup,
-  UntypedFormBuilder,
+  FormGroup,
+  FormBuilder,
   FormControl,
   Validators,
 } from '@angular/forms';
@@ -15,13 +15,13 @@ import {
   styleUrls: ['./car-image-add.component.css'],
 })
 export class CarImageAddComponent implements OnInit {
-  carImageAddForm: UntypedFormGroup;
+  carImageAddForm: FormGroup;
   selectedCar:number;
   cars:Car[] = [];
 
   constructor(
     private carImageService: CarImageService,
-    private formBuilder: UntypedFormBuilder,
+    private formBuilder: FormBuilder,
     private toastrService: ToastrService,
     private carService:CarService
   ) {}
