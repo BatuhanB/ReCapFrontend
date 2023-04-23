@@ -14,23 +14,18 @@ import { CartKey } from 'src/app/models/localStorageKey';
 })
 export class CartComponent implements OnInit {
   cart = faCartShopping;
-  cartItems: CartItem[];
+  cartItems: CarDetail[] = [];
   totalQuantity:number = 0;
   isSave:boolean = false;
-  constructor(private cartService: CartService,private localStorageService:LocalStorageService) {}
+  constructor(private cartService: CartService,
+    private localStorageService:LocalStorageService) {}
 
   ngOnInit(): void {
     this.listCart();
-    this.test();
-  }
-  
-  test():boolean{
-    this.isSave =  this.localStorageService.isSetToStorage(CartKey);
-    return this.isSave;
   }
 
   listCart() {
-    this.cartItems = this.cartService.cartList();
+    this.cartItems = this.localStorageService.getStorageItems() ;
   }
 
   removeFromCart(carDetail:CarDetail){

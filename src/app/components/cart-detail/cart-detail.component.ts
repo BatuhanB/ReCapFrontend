@@ -13,15 +13,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-detail.component.css'],
 })
 export class CartDetailComponent implements OnInit {
-  cartItems: CartItem[];
+  cartItems: CarDetail[];
   carImages: CarImage[];
   carImagePath: string = 'https://localhost:5001';
-  selectedCarId:number;
-  totalRentPrice:number;
-  
+  selectedCarId: number;
+  totalRentPrice: number;
+
   constructor(
     private cartService: CartService,
-    private localStorageService:LocalStorageService
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -29,17 +29,22 @@ export class CartDetailComponent implements OnInit {
   }
 
   CartDetailList() {
-    this.cartItems = this.cartService.cartList();
-    this.selectedCarId = this.cartItems[0].carDetail.carId;
-    let checkIfExist = this.localStorageService.getStorage(CartKey);
-    console.log(checkIfExist)
+    let result = [];
+    this.cartItems = this.localStorageService.getStorageItems();
+    result = this.cartItems;
+    this.selectedCarId = this.cartItems[0].carId;
+    this.totalRentPrice = this.ListTotalPrice(result);
   }
 
-  ListTotalPrice(){
-    return this.cartItems[0].carDetail.dailyPrice
+  ListTotalPrice(items: CarDetail[]): number {
+    let totalPrice = 0;
+    items.forEach((x) => {
+      totalPrice += x.dailyPrice;
+    });
+    return totalPrice;
   }
-  removeFromCart(carDetail:CarDetail){
+  removeFromCart(carDetail: CarDetail) {
     this.cartService.removeFromCart(carDetail);
-    this.localStorageService.removeFromStorage(CartKey)
+    this.localStorageService.removeFromStorage(CartKey);
   }
 }

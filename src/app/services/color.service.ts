@@ -12,11 +12,11 @@ export class ColorService {
   constructor(private httpClient: HttpClient,@Inject('baseUrl') private apiUrl:string) {}
 
   getColors(): Observable<ListResponseModel<Color>> {
-    let currentApi = this.apiUrl + 'getall';
+    let currentApi = this.apiUrl + 'Colors/getall';
     return this.httpClient.get<ListResponseModel<Color>>(currentApi);
   }
   addColors(color: Color): Observable<ResponseModel> {
-    let currentApi = this.apiUrl + 'add';
+    let currentApi = this.apiUrl + 'Colors/add';
     return this.httpClient.post<ResponseModel>(currentApi, color);
   }
 }

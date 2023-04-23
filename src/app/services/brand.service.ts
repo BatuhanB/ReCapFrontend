@@ -12,12 +12,12 @@ export class BrandService {
   constructor(private httpClient:HttpClient,@Inject('baseUrl') private apiUrl:string) { }
 
   getBrands():Observable<ListResponseModel<Brand>>{
-    let url = this.apiUrl + "getall";
+    let url = this.apiUrl + "Brands/getall";
     return this.httpClient.get<ListResponseModel<Brand>>(url);
   }
 
   add(brand:Brand):Observable<ResponseModel>{
-    let url = this.apiUrl + "add";
+    let url = this.apiUrl + "Brands/add";
     return this.httpClient.post<ResponseModel>(url,brand);
   }
 }

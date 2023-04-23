@@ -28,16 +28,17 @@ export class BrandComponent implements OnInit {
   }
 
   getBrands() {
-    this.brandService.getBrands().subscribe((response) => {
-      this.brands = response.data;
-      this.dataLoaded = true;
+    this.brandService.getBrands().subscribe({
+      next:(value)=> {
+          this.brands = value.data;
+          this.dataLoaded = true
+      },error:(err) =>{
+          console.log(err);
+          
+      },
     });
   }
-  // getAllBrandClass() {// return back to fix active
-  //   return this.currentBrand == {id:-1, name:''}
-  //     ? 'list-group-item active'
-  //     : 'list-group-item';
-  // }
+
   getAllBrandClass() {
     return this.currentBrand == null
       ? 'list-group-item active'

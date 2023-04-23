@@ -5,27 +5,27 @@
                 <div *ngFor="let cartItem of cartItems" class="d-flex aligns-items-center justify-content-center"
                     style="margin-right: 20px;">
                     <div class="card-footer vertical">
-                        <p class="bold-2">{{cartItem.carDetail.brandName + " "}}{{cartItem.carDetail.carName |
+                        <p class="bold-2">{{cartItem.brandName + " "}}{{cartItem.carName |
                             uppercase}}</p>
                     </div>
                     <div class="card-body">
                         <img class="card-img-top image"
-                            src="{{carImagePath}}{{cartItem.carDetail.carImages[0].imagePath}}" />
-                        <p class="card-title card-ttt">{{cartItem.carDetail.modelYear}} </p>
+                            src="{{carImagePath}}{{cartItem.carImages[0].imagePath}}" />
+                        <p class="card-title card-ttt">{{cartItem.modelYear}} </p>
                         <p class="card-text">
-                            {{cartItem.carDetail.description.substring(0,cartItem.carDetail.description.substring(0,180).lastIndexOf("
+                            {{cartItem.description.substring(0,cartItem.description.substring(0,180).lastIndexOf("
                             "))}}...</p>
-                        <button class="btn button-6" (click)="removeFromCart(cartItem.carDetail)">Kaldır</button>
+                        <button class="btn button-6" (click)="removeFromCart(cartItem)">Kaldır</button>
                     </div>
                     <div class="card-footer vertical">
-                        <span class="bold">{{ " " + cartItem.carDetail.dailyPrice | currency}}</span>
+                        <span class="bold">{{ " " + cartItem.dailyPrice | currency}}</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-3 total-sec">
             <h3 class="total">Toplam Tutar</h3>
-            <h5 class="total">124.00</h5>
+            <h5 class="total">{{totalRentPrice | currency}}</h5>
         </div>
     </div>
 </div>
